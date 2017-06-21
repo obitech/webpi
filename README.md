@@ -21,6 +21,7 @@ Adminer | 2015
 
 ### Preferences
 Make sure to change the following settings:
+
 Service | Folder | Contents
 ---|---|---
 docker-compose file | ``docker/webpi.yaml`` | Set the name for your caddy image under _web: ... image:_
