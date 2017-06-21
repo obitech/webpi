@@ -1,0 +1,18 @@
+:80 {
+    root /srv/www/ 
+    tls off
+    browse
+    log stdout
+    errors stdout
+    fastcgi / 127.0.0.1:9000 php
+}
+
+:2015 {
+    root /srv/db
+    tls off
+    browse
+    startup php-fpm7
+    fastcgi / 127.0.0.1:9000 php
+    log stdout
+    errors stdout
+}

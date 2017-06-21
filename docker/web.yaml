@@ -1,0 +1,28 @@
+version: "3"
+services:
+    db:
+        image: jsurf/rpi-mariadb:latest
+        environment:
+            - MYSQL_ROOT_PASSWORD=<...>
+            - MYSQL_DATABASE=<...>
+            - MYSQL_USER=<...>
+            - MYSQL_PASSWORD=<...>
+        volumes:
+            - "~/mariadb/db:/var/lib/mysql"
+        expose:
+            - 3306
+    web:
+        image: <NAME OF YOUR CADDY IMAGE>
+        build: ~/docker/caddy
+        expose:
+            - 80
+            - 443
+            - 2015
+        ports:
+            - "80:80"
+            - "2015:2015"
+        volumes:
+            - "~/caddy/Caddyfile:/etc/Caddyfile"
+            - "~/caddy/www:/srv/www"
+        links:
+            - db
